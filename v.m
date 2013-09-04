@@ -112,8 +112,8 @@ classdef v
             {'T', 604800},... % wk
             {'T', 2629743.83},... % mth
             {'T', 31556926},... % yr
-            {'I', 31556926},... % mA
-            {'I', 31556926},... % A
+            {'I', 0.001},... % mA
+            {'I', 1},... % A
             {'t', 0},... % dC (requires function)
             {'t', 0},... % K (requires function)
             {'t', 0},... % dF (requires function)
