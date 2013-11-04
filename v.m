@@ -85,7 +85,7 @@ classdef v
             'Pa',...
             'C', 'mAh', 'Ah',...
             'mV', 'V',...
-            'W',...
+            'W', 'kW',...
             'ohm',...
             'rad', 'deg', 'rot',...
             'F'}, {...
@@ -112,8 +112,8 @@ classdef v
             {'T', 604800},... % wk
             {'T', 2629743.83},... % mth
             {'T', 31556926},... % yr
-            {'I', 31556926},... % mA
-            {'I', 31556926},... % A
+            {'I', 0.001},... % mA
+            {'I', 1},... % A
             {'t', 0},... % dC (requires function)
             {'t', 0},... % K (requires function)
             {'t', 0},... % dF (requires function)
@@ -127,9 +127,10 @@ classdef v
             {'q', 1, containers.Map({'A', 's'}, {1, 1})},... % C
             {'q', 3.6, containers.Map({'A', 's'}, {1, 1})},... % mAh
             {'q', 3600, containers.Map({'A', 's'}, {1, 1})},... % Ah
-            {'V', 1000, containers.Map({'kg', 'm', 's', 'A'}, {1, 2, -3, -1})},... % mV
+            {'V', 0.001, containers.Map({'kg', 'm', 's', 'A'}, {1, 2, -3, -1})},... % mV
             {'V', 1, containers.Map({'kg', 'm', 's', 'A'}, {1, 2, -3, -1})},... % V
             {'P', 1, containers.Map({'kg', 'm', 's'}, {1, 2, -3})},... % W
+            {'P', 1000, containers.Map({'kg', 'm', 's'}, {1, 2, -3})},... % kW
             {'r', 1, containers.Map({'kg', 'm', 's', 'A'}, {1, 2, -3, -2})},... % Ohm
             {'a', 1},...  % rad
             {'a', (2*pi)/360},... % deg
@@ -1046,9 +1047,9 @@ classdef v
             % Unc
             if(abs(a.unc) >= eps)
                 if(digits > 0)
-                    str = [str ' Â± ' num2str(floor(a.unc/digits)*digits)];
+                    str = [str ' ± ' num2str(floor(a.unc/digits)*digits)];
                 else
-                    str = [str ' Â± ' sprintf('%6.*f', abs(digits), a.unc)];
+                    str = [str ' ± ' sprintf('%6.*f', abs(digits), a.unc)];
                 end
             
                 % Units
