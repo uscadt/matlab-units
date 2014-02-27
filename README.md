@@ -9,13 +9,26 @@ This repo provides a MATLAB class called `v` (for variable) that allows units an
 Try these commands out to start:
 
 ```matlab
-v.listUnits() % list supported units
-x = v(1, 'ft') % make a new v
-x = x.convertTo('in') %  convert to inches
-y = v(1, 'N') + 10 + x % add some items
-x + y % this throws a "not dimensionally equivalent" error
-y.convertToFundamentals() % show fundamental units
-v(1, 'm/ft').simplifyUnits() % simplify units
+% list supported units
+v.listUnits()
+
+% make a new v
+x = v(1, 'ft')
+
+% convert to inches
+x = x.convertTo('in')
+
+% add with scalars and other v's
+x = x + 10  + v(1, 'cm')
+
+% try something silly (throw a "not dimensionally equivalent" error)
+x + v(1, 'N')
+
+% break down into fundamental units
+v(1, 'N').convertToFundamentals()
+
+% reduce dimensionally equivalent units to one unit type
+v(1, 'm*ft').simplifyUnits()
 ```
 
 ## Installation
