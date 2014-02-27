@@ -30,8 +30,7 @@ v(1, 'm/ft').simplifyUnits() % simplify units
 * dimensionallyEquivalent(v, v) - (Static) returns true/1 or false/0
 * v(number, 'unit string', uncertainty) - constructs a v
 * convertTo('unit string') - returns a new v of equivilant magnitude
-* extract('unit string') - returns a v's value after converting it to
-* the given unit string
+* extract('unit string') - returns a v's value after converting it to the given unit string
 * convertToFundamentals() - returns a new v in fundamental units
 * simplifyUnits() - returns a v with only one unit per dimension
 * checkDimension('dimension character')
